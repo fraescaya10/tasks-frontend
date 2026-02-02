@@ -8,5 +8,5 @@ export const environment = {
         authDomain: "<FIREBASE_AUTH_DOMAIN>",
         messagingSenderId: "<FIREBASE_MESSAGE_SENDER_ID>"
     },
-    useEmulators: false
+    useEmulators: true
 };

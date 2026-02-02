@@ -105,7 +105,7 @@ export class TasksComponent implements OnInit {
         });
     }
 
-    deleteTask(task:Task) {
+    deleteTask(task: Task) {
         const dialogRef = this.dialog.open(
             ConfirmDialogComponent,
             { data: { customMessage: `Are you sure you want to delete the task "${task.title}"?` } }
@@ -122,6 +122,9 @@ export class TasksComponent implements OnInit {
         this.taskService.deleteTask(task.id).subscribe({
             next: () => {
                 this.loading = false;
+                this.snackBar.open(`Task ${task.title} deleted successfully`, undefined, {
+                    duration: 3000
+                });
                 this.getTasks();
             },
             error: () => {

@@ -9,7 +9,27 @@ Siéntete libre de clonar este repositorio y utilizarlo como base para el desarr
 De igual manera puedes documentar dentro de este archivo todo lo que deseas contar sobre tu desarrollo, como por ejemplo, decisiones de diseño, problemas encontrados, etc.
 
 ## Comentarios sobre el desarrollo
-...
+El presente proyecto es una aplicación base para un crud de tareas, el mismo que se conecta a un api creado en ExpressJS, está estructurado por modulos de tal manera que sea facilmente escalable. 
+Para probar localmente podemos modificar el archivo `environments/environment.development.ts` con las credenciales que se requieran. 
+Asegurese de que `useEmulators: true` para usar los emuladores de firebase de forma local, mientras que para produccion dejarlo en false
+
+Finalmente para deployar en firebase hosting ejecutamos el comando de build
+```shell
+ng build
+```
+luego si no tenemos inicializado hosting ponemos el siguiente comando
+```shell
+firebase init hosting
+```
+Aqui nos dará algunas preguntas, asegurese de poner como directorio publico (Public directory) `dist/NombreDelProyecto/browser`, luego cuando se pregunte por SPA(Single Page Application) poner en Yes
+esto nos ayuda a que las rutas de Angular funcionen
+
+Una vez configurado todo eso ponemos:
+```shell
+firebase deploy --only hosting
+```
+con esto se subiran los archivos y se nos mostrará la url para que accedamos
+
 
 ## Development server
 
