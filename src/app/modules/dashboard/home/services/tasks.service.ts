@@ -1,9 +1,15 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { inject, Injectable } from "@angular/core";
+
+import { environment } from "../../../../../environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: "root"
 })
 export class TasksService {
+    private http: HttpClient = inject(HttpClient);
 
-  constructor() { }
+    getTasks() {
+        return this.http.get(`${environment.apiUrl}/tasks`);
+    }
 }

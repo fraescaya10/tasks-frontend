@@ -1,4 +1,4 @@
-import { provideHttpClient } from "@angular/common/http";
+import { provideHttpClient, withInterceptors } from "@angular/common/http";
 import { ApplicationConfig } from "@angular/core";
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { connectAuthEmulator, getAuth, provideAuth } from "@angular/fire/auth";
@@ -7,12 +7,13 @@ import { provideRouter } from "@angular/router";
 
 import { environment } from "../environments/environment";
 import { routes } from "./app.routes";
+import { authInterceptor } from "./core/interceptors/auth.interceptor";
 
 export const appConfig: ApplicationConfig = {
     providers: [
         provideRouter(routes),
         provideAnimationsAsync(),
-        provideHttpClient(),
+        provideHttpClient(withInterceptors([authInterceptor])),
         provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
         provideAuth(() => {
             const auth = getAuth();
