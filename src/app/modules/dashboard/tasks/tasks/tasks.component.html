@@ -24,7 +24,8 @@
           <mat-checkbox (click)="$event.stopPropagation()"
                         (change)="updateCompleted(task)"
                         [checked]="task.completed"
-                        [aria-label]="task.completed ? 'Mark as pending': 'Mark as completed'">
+                        [aria-label]="task.completed ? 'Mark as pending': 'Mark as completed'"
+                        [disabled]="loading">
           </mat-checkbox>
         </td>
       </ng-container>

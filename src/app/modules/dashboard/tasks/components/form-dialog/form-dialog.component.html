@@ -1,1 +1,76 @@
-<p>form-dialog works!</p>
+<h2 mat-dialog-title>
+  @if (isUpdate) {
+    Update task
+  } @else {
+    Create task
+  }
+</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-card>
+    <mat-card-content>
+      <form #addEditTaskNgForm="ngForm" (ngSubmit)="onAddEditFormSubmit()" class="add-edit-task-form">
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input matInput
+                 #titleField="ngModel"
+                 [(ngModel)]="addEditTaskForm.title"
+                 name="title"
+                 aria-label="Enter the title for the task"
+                 required>
+          @if (titleField.invalid && titleField.touched) {
+            <mat-error>
+              @if (titleField.errors?.['required']) {
+                Title is required.
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <input matInput
+                 #descriptionField="ngModel"
+                 [(ngModel)]="addEditTaskForm.description"
+                 name="description"
+                 aria-label="Enter the task description"
+                 required>
+          @if (descriptionField.invalid && descriptionField.touched) {
+            <mat-error>
+              @if (descriptionField.errors?.['required']) {
+                Description is required.
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+        <div class="checkbox-container">
+          <mat-checkbox #completedField="ngModel"
+                        [(ngModel)]="addEditTaskForm.completed"
+                        name="completed"
+                        aria-label="Check if the task is completed"
+                        color="primary">
+            Completed?
+          </mat-checkbox>
+        </div>
+
+        <div class="button-container">
+          <button mat-flat-button
+                  type="submit"
+                  color="primary"
+                  [disabled]="addEditTaskNgForm.invalid || loading">
+            @if (isUpdate) {
+              Update
+            } @else {
+              Create
+            }
+          </button>
+          <button mat-flat-button
+                  type="button"
+                  class="login-button"
+                  mat-dialog-close>Cancel
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+
+</mat-dialog-content>

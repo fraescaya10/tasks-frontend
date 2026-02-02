@@ -5,3 +5,9 @@ export interface Task {
     createdAt: Date;
     completed: boolean;
 }
+
+export interface TaskRequest {
+    title: string;
+    description: string;
+    completed: boolean;
+}
