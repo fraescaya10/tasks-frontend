@@ -1,0 +1,37 @@
+<div class="login-container">
+  <img src="assets/images/logo-atom-chat.png" alt="image" class="login-image">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Welcome to Tasks Frontend</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form #loginNgForm="ngForm" (ngSubmit)="onSubmitForm()">
+        <mat-form-field>
+          <mat-label>Enter email</mat-label>
+          <input matInput
+                 #emailField="ngModel"
+                 [(ngModel)]="loginForm.email"
+                 name="email"
+                 type="email"
+                 aria-label="Enter email"
+                 email
+                 required>
+          @if (emailField.invalid && emailField.touched) {
+            <mat-error>
+              @if (emailField.errors?.['required']) {
+                Email is required.
+              } @else if (emailField.errors?.['email']) {
+                Invalid email.
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+        <button mat-flat-button
+                type="submit"
+                color="primary"
+                [disabled]="loginNgForm.invalid"
+                class="login-button">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

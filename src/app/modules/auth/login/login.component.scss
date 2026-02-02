@@ -1,0 +1,46 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.login-image {
+  width: 400px;
+  margin-bottom: 1.25rem;
+  max-width: 100%;
+}
+
+.login-button {
+  display: flex;
+  margin: auto;
+}
+
+mat-form-field {
+  width: 100%;
+  padding: 5px;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 30rem;
+  padding: 1rem;
+}
+
+mat-card-header {
+  margin-bottom: 1.25rem;
+}
+
+mat-card-footer {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+
+  .login-image {
+    width: 250px;
+  }
+}
